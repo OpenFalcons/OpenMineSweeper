@@ -1,9 +1,9 @@
-package graphicalUserInterface;
+package main.graphicalUserInterface;
 
 
-import graphicalUserInterface.GUIManager.BackAndFrontEndsActionSplicer;
+import main.graphicalUserInterface.GUIManager.BackAndFrontEndsActionSplicer;
 
-import graphicalUserInterface.GameBoardManager.BoardButton;
+import main.graphicalUserInterface.GameBoardManager.BoardButton;
 
 
 
@@ -17,8 +17,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 
-
+import javax.imageio.ImageIO;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -33,10 +34,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.Timer;
 
-import data.DataManager;
-import data.XYPosition;
+import main.data.DataManager;
+import main.data.XYPosition;
 
-import mineSweeper.MineSweeper.MineSweeperGenerator;
+import main.mineSweeper.MineSweeper.MineSweeperGenerator;
  public class GUIManager extends JFrame 
  {
 	  private static final long serialVersionUID = 1L;
@@ -47,7 +48,8 @@ import mineSweeper.MineSweeper.MineSweeperGenerator;
 	  final DataManager dataManager;
 	  final IconManager   iconManager;
     
-	  public GUIManager(final DataManager dataManager){
+	  public GUIManager(final DataManager dataManager) throws IOException
+	  {
 		  
 	   this.dataManager = dataManager;
 	   
@@ -113,12 +115,13 @@ import mineSweeper.MineSweeper.MineSweeperGenerator;
 		  final Icon wrongDecision;
 		  final Icon blastedMine;
 		  
-		  IconManager(){
-			  flag = new ImageIcon("C:\\wamp\\www\\MineSweeperFinal\\Icons\\Flagged.jpg");
-			  mine = new ImageIcon("C:\\wamp\\www\\MineSweeperFinal\\Icons\\Mine.jpg");
-			  correctDecision = new ImageIcon("C:\\wamp\\www\\MineSweeperFinal\\Icons\\CorrectJudgement.jpg");
-			  wrongDecision = new ImageIcon("C:\\wamp\\www\\MineSweeperFinal\\Icons\\WrongJudgement.gif");
-			  blastedMine = new ImageIcon("C:\\wamp\\www\\MineSweeperFinal\\Icons\\BlastedMine.gif");
+		  IconManager() throws IOException
+		  {
+			  flag =  new ImageIcon(ImageIO.read(getClass().getResource("Flagged.jpg")));
+			  mine = new ImageIcon(ImageIO.read(getClass().getResource("Mine.jpg")));
+			  correctDecision = new ImageIcon(ImageIO.read(getClass().getResource("CorrectJudgement.jpg")));
+			  wrongDecision = new ImageIcon(ImageIO.read(getClass().getResource("WrongJudgement.jpg")));
+			  blastedMine = new ImageIcon(ImageIO.read(getClass().getResource("WrongJudgement.jpg")));
 		 }		  
 		   
 		  Icon removeIcon(){

@@ -1,4 +1,4 @@
-package data;
+package main.data;
 
 import java.util.ArrayList;
 import java.util.Random;
